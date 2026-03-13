@@ -1,5 +1,6 @@
 **WEEK 1**
 - Project Structure created
+- Sudoku Generator Code added
 
 **TASKS FOR THE WEEK**
 - Submit java files that solve a sudoku based on a logic you choose
