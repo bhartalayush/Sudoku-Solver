@@ -2,10 +2,12 @@
 
 ## Team Members
 
-Ayush Bhartal – 1012411160
-P. Varsha – 1012411170
-Aarya Bhandari – 1012411192
-Amey Golande – 1012411195
+Ayush Bhartal – 1012411160  
+P. Varsha – 1012411170  
+Aarya Bhandari – 1012411192  
+Amey Golande – 1012411195  
+
+
 ## Problem Description
 
 Sudoku is a logic based number puzzle played on a 9 × 9 grid. The objective is to fill the grid with numbers from 1 to 9 such that each number appears only once in every row, every column, and each 3 × 3 subgrid.
