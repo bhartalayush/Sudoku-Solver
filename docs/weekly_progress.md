@@ -3,7 +3,12 @@
 - Sudoku Generator Code added
 - Sudoku Bit Mask Solver added ~Varsha
 - Sudoku Solver based on CLRS added ~Ayush
+- Sudoku Solver based on Stuart Russell's Artificial Intelligence a Modern Approach ~Aarya
+- Sudoku Solver based on Tannenbaum's Data Structures Using C ~ Amey
+
+**WEEK 2**
 
 **TASKS FOR THE WEEK**
-- Submit java files that solve a sudoku based on a logic you choose
-- Merge/ Create a finalised code for our sudoku_solver based on the above submissions and time complexity
+- Evaluate Code and find respective Time Completxities
+- Finalise code based on time complexity and implementation compplexity
+- Create GUI
