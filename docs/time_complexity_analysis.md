@@ -16,6 +16,8 @@ printBoard()
 Time Complexity: O(1)  
 Fixed 9x9 traversal.
 
+Overall Time Complexity: O(9^n) ≈ O(9^81)
+
 ---
 
 ### SudokuGenerator
