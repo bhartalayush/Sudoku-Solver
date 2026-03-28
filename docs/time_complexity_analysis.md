@@ -22,6 +22,23 @@ Overall Time Complexity: O(9^n) ≈ O(9^81)
 
 ### SudokuGenerator
 
+check()  
+Time Complexity: O(1)  
+Fixed loops of size 9.
+
+fill()  
+Time Complexity: O(9^n) ≈ O(9^81)  
+Backtracking over all cells.
+
+removeNumbers()  
+Time Complexity: O(1)  
+Removes fixed 40 elements.
+
+printBoard()  
+Time Complexity: O(1)  
+Fixed 9x9 traversal.
+
+Overall Time Complexity: O(9^n) ≈ O(9^81)
 
 ---
 
