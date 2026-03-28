@@ -20,7 +20,7 @@ Overall Time Complexity: O(9^n) ≈ O(9^81)
 
 ---
 
-### SudokuGenerator
+### SudokuGenerator ~ Varsha
 
 check()  
 Time Complexity: O(1)  
