@@ -25,23 +25,22 @@ Space Complexity: O(n)
 
 ### SudokuBitMask ~ Varsha
 
-check()  
+initializeMasks()  
 Time Complexity: O(1)  
-Fixed loops of size 9.
+Space Complexity: O(1)
 
-fill()  
+solve()  
 Time Complexity: O(9^n) ≈ O(9^81)  
-Backtracking over all cells.
-
-removeNumbers()  
-Time Complexity: O(1)  
-Removes fixed 40 elements.
+Space Complexity: O(n)
 
 printBoard()  
 Time Complexity: O(1)  
-Fixed 9x9 traversal.
+Space Complexity: O(1)
 
-Overall Time Complexity: O(9^n) ≈ O(9^81)
+Overall  
+Big O: O(9^n) ≈ O(9^81)  
+Omega: Ω(n)  
+Space Complexity: O(n)
 
 ---
 
