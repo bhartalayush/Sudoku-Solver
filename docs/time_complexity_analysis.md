@@ -50,8 +50,28 @@ Overall Time Complexity: O(9^n) ≈ O(9^81)
 
 ---
 
-### SudokuCSP
+### SudokuCSP ~ Aarya
 
+isSafe()  
+Time Complexity: O(1)  
+Space Complexity: O(1)
+
+fillBoard()  
+Time Complexity: O(9^n) ≈ O(9^81)  
+Space Complexity: O(n)
+
+removeNumbers()  
+Time Complexity: O(1)  
+Space Complexity: O(1)
+
+printBoard()  
+Time Complexity: O(1)  
+Space Complexity: O(1)
+
+Overall  
+Big O: O(9^n) ≈ O(9^81)  
+Omega: Ω(n)  
+Space Complexity: O(n)
 
 ---
 
