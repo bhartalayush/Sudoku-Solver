@@ -55,7 +55,27 @@ Overall Time Complexity: O(9^n) ≈ O(9^81)
 
 ---
 
-### SudokuExp2D
+### SudokuExp2D ~ Amey
 
+isValid()  
+Time Complexity: O(1)  
+Space Complexity: O(1)
+
+findEmpty()  
+Time Complexity: O(1)  
+Space Complexity: O(1)
+
+solve()  
+Time Complexity: O(9^n) ≈ O(9^81)  
+Space Complexity: O(n) (explicit stack) :contentReference[oaicite:0]{index=0}
+
+printBoard()  
+Time Complexity: O(1)  
+Space Complexity: O(1)
+
+Overall  
+Big O: O(9^n) ≈ O(9^81)  
+Omega: Ω(n)  
+Space Complexity: O(n)
 
 ---
