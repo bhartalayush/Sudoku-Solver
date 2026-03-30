@@ -6,21 +6,24 @@
 
 isSafe()  
 Time Complexity: O(1)  
-Checks row, column and box with fixed size loops.
+Space Complexity: O(1)
 
 solve()  
 Time Complexity: O(9^n) ≈ O(9^81)  
-Backtracking, tries all possibilities in worst case.
+Space Complexity: O(n)
 
 printBoard()  
 Time Complexity: O(1)  
-Fixed 9x9 traversal.
+Space Complexity: O(1)
 
-Overall Time Complexity: O(9^n) ≈ O(9^81)
+Overall  
+Big O: O(9^n) ≈ O(9^81)  
+Omega: Ω(n)  
+Space Complexity: O(n)
 
 ---
 
-### SudokuGenerator ~ Varsha
+### SudokuBitMask ~ Varsha
 
 check()  
 Time Complexity: O(1)  
@@ -42,7 +45,7 @@ Overall Time Complexity: O(9^n) ≈ O(9^81)
 
 ---
 
-### SudokuSolver
+### SudokuBruteForce
 
 
 ---
