@@ -98,3 +98,24 @@ Omega: Ω(n)
 Space Complexity: O(n)
 
 ---
+
+### SudokuBruteForce ~ Yatharth 
+
+isCompleteValid()  
+Time Complexity: O(1)  
+Space Complexity: O(1)
+
+brute()  
+Time Complexity: O(9^n) ≈ O(9^81)  
+Space Complexity: O(n)
+
+printBoard()  
+Time Complexity: O(1)  
+Space Complexity: O(1)
+
+Overall  
+Big O: O(9^n) ≈ O(9^81)  
+Omega: Ω(9^n)  
+Space Complexity: O(n)
+
+---
