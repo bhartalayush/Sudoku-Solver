@@ -1,89 +1,112 @@
-import java.util.*;
+public class SudokuBruteForce {
 
-public class SudokuSolver {
+    static int board[][] = {
+        {5,3,0,0,7,0,0,0,0},
+        {6,0,0,1,9,5,0,0,0},
+        {0,9,8,0,0,0,0,6,0},
+        {8,0,0,0,6,0,0,0,3},
+        {4,0,0,8,0,3,0,0,1},
+        {7,0,0,0,2,0,0,0,6},
+        {0,6,0,0,0,0,2,8,0},
+        {0,0,0,4,1,9,0,0,5},
+        {0,0,0,0,8,0,0,7,9}
+    };
 
-    public static void main(String[] args) {
-        int[][] board = new int[9][9];
-        fill(board);
-        remove(board, 40);
-        solve(board);
-        print(board);
-    }
+    static boolean isCompleteValid()
+    {
+        // check rows
+        for(int i = 0; i < 9; i++)
+        {
+            boolean seen[] = new boolean[10];
+            for(int j = 0; j < 9; j++)
+            {
+                int num = board[i][j];
+                if(num == 0 || seen[num]) return false;
+                seen[num] = true;
+            }
+        }
 
-    static boolean solve(int[][] board) {
-        for (int row = 0; row < 9; row++) {
-            for (int col = 0; col < 9; col++) {
-                if (board[row][col] == 0) {
-                    for (int num = 1; num <= 9; num++) {
-                        if (isValid(board, row, col, num)) {
-                            board[row][col] = num;
-                            if (solve(board)) return true;
-                            board[row][col] = 0;
-                        }
+        // check columns
+        for(int j = 0; j < 9; j++)
+        {
+            boolean seen[] = new boolean[10];
+            for(int i = 0; i < 9; i++)
+            {
+                int num = board[i][j];
+                if(num == 0 || seen[num]) return false;
+                seen[num] = true;
+            }
+        }
+
+        // check 3x3 boxes
+        for(int br = 0; br < 3; br++)
+        {
+            for(int bc = 0; bc < 3; bc++)
+            {
+                boolean seen[] = new boolean[10];
+                for(int i = 0; i < 3; i++)
+                {
+                    for(int j = 0; j < 3; j++)
+                    {
+                        int num = board[br*3 + i][bc*3 + j];
+                        if(num == 0 || seen[num]) return false;
+                        seen[num] = true;
                     }
-                    return false;
                 }
             }
         }
-        return true;
-    }
-
-    static boolean fill(int[][] board) {
-        for (int row = 0; row < 9; row++) {
-            for (int col = 0; col < 9; col++) {
-                if (board[row][col] == 0) {
-                    List<Integer> nums = new ArrayList<>();
-                    for (int i = 1; i <= 9; i++) nums.add(i);
-                    Collections.shuffle(nums);
-                    for (int num : nums) {
-                        if (isValid(board, row, col, num)) {
-                            board[row][col] = num;
-                            if (fill(board)) return true;
-                            board[row][col] = 0;
-                        }
-                    }
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    static void remove(int[][] board, int k) {
-        Random rand = new Random();
-        while (k > 0) {
-            int i = rand.nextInt(9);
-            int j = rand.nextInt(9);
-            if (board[i][j] != 0) {
-                board[i][j] = 0;
-                k--;
-            }
-        }
-    }
-
-    static boolean isValid(int[][] board, int row, int col, int num) {
-        for (int i = 0; i < 9; i++) {
-            if (board[row][i] == num || board[i][col] == num) return false;
-        }
-
-        int sr = row - row % 3;
-        int sc = col - col % 3;
-
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (board[sr + i][sc + j] == num) return false;
-            }
-        }
 
         return true;
     }
 
-    static void print(int[][] board) {
-        for (int[] row : board) {
-            for (int num : row) {
-                System.out.print(num + " ");
-            }
+    static boolean brute(int row, int col)
+    {
+        if(row == 9)
+        {
+            return isCompleteValid(); // only check at end
+        }
+
+        int nextRow = (col == 8) ? row + 1 : row;
+        int nextCol = (col + 1) % 9;
+
+        if(board[row][col] != 0)
+        {
+            return brute(nextRow, nextCol);
+        }
+
+        for(int num = 1; num <= 9; num++)
+        {
+            board[row][col] = num;
+
+            if(brute(nextRow, nextCol))
+                return true;
+        }
+
+        board[row][col] = 0;
+        return false;
+    }
+
+    static void printBoard()
+    {
+        for(int i = 0; i < 9; i++)
+        {
+            for(int j = 0; j < 9; j++)
+                System.out.print(board[i][j] + " ");
+
             System.out.println();
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        if(brute(0,0))
+        {
+            System.out.println("Solved:");
+            printBoard();
+        }
+        else
+        {
+            System.out.println("No solution");
         }
     }
 }
