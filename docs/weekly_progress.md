@@ -8,7 +8,12 @@
 
 **WEEK 2**
 
-**TASKS FOR THE WEEK**
-- Evaluate Code and find respective Time Completxities
-- Finalise code based on time complexity and implementation compplexity
-- Create GUI
+- Evaluated Code and found respective Time & Space Completxities
+- Finalised code based on time, space complexity and implementation compplexity
+- Started work on GUI
+
+**WEEK 3 & 4**
+
+- Completed GUI
+- Working prototype complete
+- Adding Features
