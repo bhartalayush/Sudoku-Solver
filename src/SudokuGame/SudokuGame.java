@@ -94,9 +94,15 @@ public class SudokuGame extends JFrame
         JButton btnCheck = makeBtn("Check",    new Color(70, 110, 180));
         JButton btnSolve = makeBtn("Give Up",  new Color(180, 80, 60));
 
+        // Hint Button
+        JButton btnHint = makeBtn("Hint", new Color(120, 100, 180));
+
         btnNew.addActionListener(e -> newGame());
         btnCheck.addActionListener(e -> checkAnswers());
         btnSolve.addActionListener(e -> showSolution());
+
+        // Hint action
+        btnHint.addActionListener(e -> giveHint());
 
         panel.add(btnNew);
         panel.add(btnCheck);
@@ -221,6 +227,23 @@ private void stopTimer()
         }
     }
 
+     // Hint Function
+    private void giveHint()
+    {
+        for(int r = 0; r < 9; r++)
+        {
+            for(int c = 0; c < 9; c++)
+            {
+                if(puzzle[r][c] == 0 && cells[r][c].getText().isEmpty())
+                {
+                    cells[r][c].setText(String.valueOf(solution[r][c]));
+                    cells[r][c].setForeground(Color.GREEN);
+                    return;
+                }
+            }
+        }
+    }
+    
     private void checkAnswers()
     {
         boolean allFilled = true;
