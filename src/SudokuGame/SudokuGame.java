@@ -10,6 +10,11 @@ public class SudokuGame extends JFrame
     private int puzzle[][] = new int[9][9];
     private int solution[][] = new int[9][9];
     private JTextField cells[][] = new JTextField[9][9];
+    
+    // Timer 
+    private JLabel timerLabel;
+    private Timer timer;
+    private int seconds = 0;
 
     private static final Color BG = new Color(245, 245, 240);
     private static final Color CELL_FIXED = new Color(220, 220, 215);
@@ -26,7 +31,8 @@ public class SudokuGame extends JFrame
         setResizable(false);
         getContentPane().setBackground(BG);
         setLayout(new BorderLayout(10, 10));
-
+        
+        add(buildTopPanel(), BorderLayout.NORTH); // Timer
         add(buildGrid(),    BorderLayout.CENTER);
         add(buildButtons(), BorderLayout.SOUTH);
 
@@ -110,6 +116,54 @@ public class SudokuGame extends JFrame
         return b;
     }
 
+        private JPanel buildTopPanel()
+{
+    // This panel will sit at the top and hold the timer
+    JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+
+    // Keep background consistent with the rest of the UI
+    panel.setBackground(BG);
+
+    // This is the label that will show the running time
+    // Starting from 00:00 when a new game begins
+    timerLabel = new JLabel("Time: 00:00");
+
+    // Making it slightly bold so it's clearly visible to the user
+    timerLabel.setFont(new Font("SansSerif", Font.BOLD, 16));
+
+    // Dark color so it contrasts nicely with light background
+    timerLabel.setForeground(new Color(50, 50, 50));
+
+    // Add the timer label to the panel
+    panel.add(timerLabel);
+
+    // Return this panel so it can be placed at the top (NORTH)
+    return panel;
+}
+
+    private void startTimer()
+{
+    seconds = 0;
+
+    if (timer != null)
+        timer.stop();
+
+    timer = new Timer(1000, e -> {
+        seconds++;
+        int mins = seconds / 60;
+        int secs = seconds % 60;
+        timerLabel.setText(String.format("Time: %02d:%02d", mins, secs));
+    });
+
+    timer.start();
+}
+
+private void stopTimer()
+{
+    if (timer != null)
+        timer.stop();
+}
+
     private void newGame()
     {
         // 1. generate full board using SudokuGenerator (CLRS randomiser)
@@ -138,6 +192,9 @@ public class SudokuGame extends JFrame
 
         // 4. render the puzzle on screen
         renderPuzzle();
+
+        // Start the timer fresh for this new game
+        startTimer();
     }
 
     private void renderPuzzle()
@@ -213,9 +270,10 @@ public class SudokuGame extends JFrame
         {
             JOptionPane.showMessageDialog(this, "Some cells are still empty!", "Keep going", JOptionPane.INFORMATION_MESSAGE);
         }
-        else if(allCorrect)
-        {
-            JOptionPane.showMessageDialog(this, "Solved correctly!", "Well done!", JOptionPane.INFORMATION_MESSAGE);
+       else if(allCorrect)
+       {
+            stopTimer();
+            JOptionPane.showMessageDialog(this, "Solved correctly!\n" + timerLabel.getText(), "Well done!", JOptionPane.INFORMATION_MESSAGE);
         }
         else
         {
@@ -225,6 +283,9 @@ public class SudokuGame extends JFrame
 
     private void showSolution()
     {
+
+        // User gave up, so we stop the timer here
+        stopTimer();
         for(int r = 0; r < 9; r++)
         {
             for(int c = 0; c < 9; c++)
